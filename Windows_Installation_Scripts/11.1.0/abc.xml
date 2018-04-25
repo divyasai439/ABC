@@ -1,0 +1,17 @@
+<project name="test" default="copylicenses_jars" basedir=".">
+
+	<target name="shutdownFiorano">
+		<!-- First shutdown the FIorano -->
+		<exec dir="." executable="cmd" os="Windows 7" >
+			<arg value="/c"/>
+			<arg value="call"/>
+			<arg value="ShutdowningFiorano.bat"/>
+		</exec>
+	</target>
+	<target name="copylicenses_jars" depends="shutdownFiorano">
+		 <!-- Copies the licenses and jars files -->
+		 <exec dir="." executable="cmd" os="Windows 7" >	
+			<arg line="/c call licenses.bat"/>
+		 </exec>
+	</target>
+</project>

@@ -1,0 +1,13 @@
+<project name="abc" basedir="." default="test3">
+	<target name="test2" >
+		<echo message="TEST2"/> 
+	</target>
+	<target name="test1" depends="test2">
+		 <exec dir="." executable="cmd" os="Windows 7" >	
+			<arg line="/c call aa1.bat"/>
+		 </exec>
+	</target>
+	<target name="test3" depends="test1">
+		<echo message="TEST3"/> 
+	</target>
+</project>

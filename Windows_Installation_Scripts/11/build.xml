@@ -1,0 +1,41 @@
+<project name="fiorano" default="installFioranoInstaller" basedir=".">	
+	<description>   Windows OS installation build file   </description>
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	
+	<target name="init">
+		<sleep minutes="1" />
+	</target>
+	
+	<target name="shutdownFiorano">
+		<!-- First shutdown the FIorano -->
+		<exec dir="." executable="cmd" os="Windows 7" >
+			<arg line="/c ShutdowningFiorano.bat"/>
+		</exec>
+	</target> 
+	
+	<target name="uninstall">
+		<!-- uninstall fiorano the FIorano-->
+		<exec dir="." executable="cmd" os="Windows 7">
+			<arg line="/c uninstall.exe"/>
+		</exec>
+	</target>
+	
+	<target name="deleteFioranoFolder">
+		 <!-- Delete contents in 11 folder -->
+		 <exec dir="." executable="cmd" os="Windows 7" >	
+			<arg line="/c DeletingFiorano.bat"/>
+		 </exec>
+	</target>
+	
+	<target name="install">
+			 <!-- Install the Fiorano -->
+			 <!-- -D<property>=<value>    Defines a property name-value pair on the command line. -->
+			 <!-- /C Carries out the command specified by the string and then terminates. You can get all the cmd command line switches by typing cmd /? -->			 
+			<!-- <exec executable="D:\Installers_From_Praveen\Script_to_install_uninstall\working\install.exe"/> -->			
+			<exec dir="." executable="cmd">
+				<arg line="/c install.exe ${property}"/>
+			</exec>
+	</target>	
+	
+	<target name="installFioranoInstaller" depends="init, shutdownFiorano, uninstall, deleteFioranoFolder, install"/>
+</project>

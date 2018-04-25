@@ -1,0 +1,14 @@
+<project name="ModifyFile" default="EditFile" basedir=".">
+
+	<property name="modulePath" value="modify_file.py"/>
+	<property name="filepath" value="C:\Fiorano\11.1.0\esb\servers\server.conf"/>
+	<property name="linenumber" value="4"/>
+	<property name="content"  value="../../../extlib/jars/postgresql-9.3-1100.jdbc3.jar"/>
+
+	<target name="EditFile">
+		<echo message="Invoking the ${modulePath}"/>
+		<exec executable="D:\Python\python.exe">			
+			<arg line="${modulePath} ${filepath} ${content} ${linenumber}"/>
+		</exec>
+	</target>
+</project>
